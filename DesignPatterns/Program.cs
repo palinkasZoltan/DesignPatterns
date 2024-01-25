@@ -1,5 +1,4 @@
-﻿using DesignPatterns.Behavioral.Mediator;
-using DesignPatterns.Behavioral.Observer;
+﻿using DesignPatterns.Structural.Bridge;
 
 namespace DesignPatterns
 {
@@ -30,30 +29,50 @@ namespace DesignPatterns
 
             #region Mediator pattern test code
 
-            IGroupChatMediator groupChatMediator = new ConcreteGroupChatMediator();
+            //IGroupChatMediator groupChatMediator = new ConcreteGroupChatMediator();
 
-            User Ram = new ConcreteUser("Ram");
-            User Dave = new ConcreteUser("Dave");
-            User Smith = new ConcreteUser("Smith");
-            User Rajesh = new ConcreteUser("Rajesh");
-            User Sam = new ConcreteUser("Sam");
-            User Pam = new ConcreteUser("Pam");
-            User Anurag = new ConcreteUser("Anurag");
-            User John = new ConcreteUser("John");
+            //User Ram = new ConcreteUser("Ram");
+            //User Dave = new ConcreteUser("Dave");
+            //User Smith = new ConcreteUser("Smith");
+            //User Rajesh = new ConcreteUser("Rajesh");
+            //User Sam = new ConcreteUser("Sam");
+            //User Pam = new ConcreteUser("Pam");
+            //User Anurag = new ConcreteUser("Anurag");
+            //User John = new ConcreteUser("John");
 
-            groupChatMediator.RegisterUser(Ram);
-            groupChatMediator.RegisterUser(Dave);
-            groupChatMediator.RegisterUser(Smith);
-            groupChatMediator.RegisterUser(Rajesh);
-            groupChatMediator.RegisterUser(Sam);
-            groupChatMediator.RegisterUser(Pam);
-            groupChatMediator.RegisterUser(Anurag);
-            groupChatMediator.RegisterUser(John);
+            //groupChatMediator.RegisterUser(Ram);
+            //groupChatMediator.RegisterUser(Dave);
+            //groupChatMediator.RegisterUser(Smith);
+            //groupChatMediator.RegisterUser(Rajesh);
+            //groupChatMediator.RegisterUser(Sam);
+            //groupChatMediator.RegisterUser(Pam);
+            //groupChatMediator.RegisterUser(Anurag);
+            //groupChatMediator.RegisterUser(John);
 
-            Dave.Send("dotnettutorials.net - this website is very good to learn Design Pattern");
-            Console.WriteLine();
+            //Dave.Send("dotnettutorials.net - this website is very good to learn Design Pattern");
+            //Console.WriteLine();
 
-            Rajesh.Send("What is Design Patterns? Please explain ");
+            //Rajesh.Send("What is Design Patterns? Please explain ");
+
+            #endregion
+
+            #region Adapter pattern test code
+
+            #endregion
+
+            #region Bridge pattern test code
+
+            Tv tv = new Tv();
+            RemoteControl rc = new RemoteControl(tv);
+
+            rc.TogglePower();
+            rc.VolumeUp();
+
+            Radio radio = new Radio();
+            AdvancedRemoteControl arc = new AdvancedRemoteControl(radio);
+
+            arc.TogglePower();
+            arc.Mute();
 
             #endregion
         }
