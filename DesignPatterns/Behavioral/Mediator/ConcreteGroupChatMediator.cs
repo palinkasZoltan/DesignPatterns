@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace DesignPatterns.Behavioral.Mediator
+﻿namespace DesignPatterns.Behavioral.Mediator
 {
     internal class ConcreteGroupChatMediator : IGroupChatMediator
     {
@@ -17,7 +15,9 @@ namespace DesignPatterns.Behavioral.Mediator
 
         public void SendMessage(string message, User user)
         {
-            Users.Where(currentUser => currentUser != user).ToList().ForEach(user => user.Receive(message));
+            Users.Where(currentUser => currentUser != user)
+                 .ToList()
+                 .ForEach(user => user.Receive(message));
             //foreach (User u in Users)
             //{
             //    if (u != user)

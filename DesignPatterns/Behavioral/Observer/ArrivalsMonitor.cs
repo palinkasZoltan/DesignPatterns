@@ -9,6 +9,7 @@ namespace DesignPatterns.Behavioral.Observer
         private readonly List<string> _flights = new();
         private readonly string _format = "{0,-20} {1,5}  {2, 3}";
         private IDisposable? _cancellation;
+
         public ArrivalsMonitor(string name)
         {
             _name = name;

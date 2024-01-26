@@ -6,6 +6,10 @@
 
         private bool _areLightsOn = false;
 
+        private FourWheeler _vehicle;
+
+        public int vehicleHashCode { get => _vehicle.GetHashCode(); }
+
         public double Fuel { get; set; } = 0;
 
         public double BrakeFluid { get; set; } = 0;
@@ -15,6 +19,11 @@
         public FourWheeler(string licensePlate)
         {
             LicensePlate = licensePlate;
+        }
+
+        public void CreateInnerVehicle()
+        {
+            _vehicle = new FourWheeler("ABC111");
         }
 
         public void Start()
@@ -47,5 +56,11 @@
         {
             return this.MemberwiseClone() as IClonable;
         }
+
+        //public IClonable DeepCopy()
+        //{
+        //    // All of the reference types must be ICLonable
+        //    FourWheeler
+        //}
     }
 }

@@ -33,6 +33,7 @@ namespace DesignPatterns.Behavioral.Observer
         {
             BaggageInfo info = new BaggageInfo(flightNumber, from, carousel);
 
+            //Do it with events too
             if (carousel > 0 && _flights.Add(info))
             {
                 foreach (IObserver<BaggageInfo> observer in _observers)

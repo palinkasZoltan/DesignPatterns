@@ -2,6 +2,8 @@
 {
     internal class Adapter : ITarget
     {
+        //Example PropertyAdapters: the UI side only sees the PropertyAdapter and not the MDD attributes
+        //We can wrap in a read only 
         private readonly Adaptee adaptee;
 
         public Adapter(Adaptee adaptee)

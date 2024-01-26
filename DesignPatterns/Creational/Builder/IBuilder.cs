@@ -6,6 +6,6 @@
 
         void BuildPartB();
 
-        void BuildPartC();
+        IBuilder BuildPartC();
     }
 }

@@ -24,12 +24,13 @@
             this._product.Add("PartB1");
         }
 
-        public void BuildPartC()
+        public IBuilder BuildPartC()
         {
             this._product.Add("PartC1");
+            return this;
         }
 
-        public Product GetProduct()
+        public Product Build()
         {
             Product result = this._product;
 
