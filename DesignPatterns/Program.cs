@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Structural.Bridge;
+﻿using DesignPatterns.Creational.Builder;
+using DesignPatterns.Structural.Bridge;
 
 namespace DesignPatterns
 {
@@ -62,17 +63,37 @@ namespace DesignPatterns
 
             #region Bridge pattern test code
 
-            Tv tv = new Tv();
-            RemoteControl rc = new RemoteControl(tv);
+            //Tv tv = new Tv();
+            //RemoteControl rc = new RemoteControl(tv);
 
-            rc.TogglePower();
-            rc.VolumeUp();
+            //rc.TogglePower();
+            //rc.VolumeUp();
 
-            Radio radio = new Radio();
-            AdvancedRemoteControl arc = new AdvancedRemoteControl(radio);
+            //Radio radio = new Radio();
+            //AdvancedRemoteControl arc = new AdvancedRemoteControl(radio);
 
-            arc.TogglePower();
-            arc.Mute();
+            //arc.TogglePower();
+            //arc.Mute();
+
+            #endregion
+
+            #region Builder pattern test code
+            Director director = new Director();
+            ConcreteBuilder builder = new ConcreteBuilder();
+            director.Builder = builder;
+
+            Console.WriteLine("Standard basic product:");
+            director.BuildMinimalViableProduct();
+            Console.WriteLine(builder.GetProduct().ListParts());
+
+            Console.WriteLine("Standard full featured product:");
+            director.BuildFullFeaturedProduct();
+            Console.WriteLine(builder.GetProduct().ListParts());
+
+            Console.WriteLine("Custom product:");
+            builder.BuildPartA();
+            builder.BuildPartC();
+            Console.Write(builder.GetProduct().ListParts());
 
             #endregion
         }
