@@ -1,5 +1,6 @@
 ﻿using DesignPatterns.Behavioral.Iterator;
 using DesignPatterns.Behavioral.Observer;
+using DesignPatterns.Behavioral.Strategy;
 using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.Prototype;
 using DesignPatterns.Structural.Bridge;
@@ -109,26 +110,42 @@ namespace DesignPatterns
 
             #region Iterator pattern test code
 
-            WordsCollection collection = new WordsCollection();
-            collection.AddItem("First");
-            collection.AddItem("Second");
-            collection.AddItem("Third");
+            //WordsCollection collection = new WordsCollection();
+            //collection.AddItem("First");
+            //collection.AddItem("Second");
+            //collection.AddItem("Third");
 
-            Console.WriteLine("Straight traversal:");
+            //Console.WriteLine("Straight traversal:");
 
-            foreach (var element in collection)
-            {
-                Console.WriteLine(element);
-            }
+            //foreach (var element in collection)
+            //{
+            //    Console.WriteLine(element);
+            //}
 
-            Console.WriteLine("\nReverse traversal:");
+            //Console.WriteLine("\nReverse traversal:");
 
-            collection.ReverseDirection();
+            //collection.ReverseDirection();
 
-            foreach (var element in collection)
-            {
-                Console.WriteLine(element);
-            }
+            //foreach (var element in collection)
+            //{
+            //    Console.WriteLine(element);
+            //}
+
+            #endregion
+
+            #region Strategy pattern test code
+
+            var context = new Context();
+
+            Console.WriteLine("Client: Strategy is set to normal sorting.");
+            context.SetStrategy(new StraightSortStrategy());
+            context.DoSomeBusinessLogic();
+
+            Console.WriteLine();
+
+            Console.WriteLine("Client: Strategy is set to reverse sorting.");
+            context.SetStrategy(new ReverseSortStrategy());
+            context.DoSomeBusinessLogic();
 
             #endregion
         }
