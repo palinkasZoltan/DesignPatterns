@@ -1,9 +1,14 @@
 ﻿using DesignPatterns.Behavioral.Iterator;
+using DesignPatterns.Behavioral.Memento;
 using DesignPatterns.Behavioral.Observer;
 using DesignPatterns.Behavioral.Strategy;
+using DesignPatterns.Creational.AbstractFactory;
+using DesignPatterns.Creational.AbstractFactory.Factory;
 using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.Prototype;
 using DesignPatterns.Structural.Bridge;
+using DesignPatterns.Structural.Composite;
+using DesignPatterns.Structural.Decorator;
 
 namespace DesignPatterns
 {
@@ -11,6 +16,12 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            //FourWheeler fw = new FourWheeler("ABC000");
+            //fw.CreateInnerVehicle();
+            //Console.WriteLine(fw.vehicleHashCode);
+            //FourWheeler clone = (FourWheeler)fw.Clone();
+            //Console.WriteLine(clone.vehicleHashCode);
+
             #region Observer pattern test code
             //BaggageHandler provider = new();
             //ArrivalsMonitor observer1 = new("BaggageClaimMonitor1");
@@ -102,12 +113,6 @@ namespace DesignPatterns
 
             #endregion
 
-            //FourWheeler fw = new FourWheeler("ABC000");
-            //fw.CreateInnerVehicle();
-            //Console.WriteLine(fw.vehicleHashCode);
-            //FourWheeler clone = (FourWheeler)fw.Clone();
-            //Console.WriteLine(clone.vehicleHashCode);
-
             #region Iterator pattern test code
 
             //WordsCollection collection = new WordsCollection();
@@ -135,17 +140,98 @@ namespace DesignPatterns
 
             #region Strategy pattern test code
 
-            var context = new Context();
+            //var context = new Context();
 
-            Console.WriteLine("Client: Strategy is set to normal sorting.");
-            context.SetStrategy(new StraightSortStrategy());
-            context.DoSomeBusinessLogic();
+            //Console.WriteLine("Client: Strategy is set to normal sorting.");
+            //context.SetStrategy(new StraightSortStrategy());
+            //context.DoSomeBusinessLogic();
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            Console.WriteLine("Client: Strategy is set to reverse sorting.");
-            context.SetStrategy(new ReverseSortStrategy());
-            context.DoSomeBusinessLogic();
+            //Console.WriteLine("Client: Strategy is set to reverse sorting.");
+            //context.SetStrategy(new ReverseSortStrategy());
+            //context.DoSomeBusinessLogic();
+
+            #endregion
+
+            #region Memento pattern test code
+
+            //Originator originator = new Originator("Super-duper-super-puper-super.");
+            //CareTaker caretaker = new CareTaker(originator);
+
+            //caretaker.Backup();
+            //originator.DoSomething();
+
+            //caretaker.Backup();
+            //originator.DoSomething();
+
+            //caretaker.Backup();
+            //originator.DoSomething();
+
+            //Console.WriteLine();
+            //caretaker.ShowHistory();
+
+            //Console.WriteLine("\nClient: Now, let's rollback!\n");
+            //caretaker.Undo();
+
+            //Console.WriteLine("\n\nClient: Once more!\n");
+            //caretaker.Undo();
+
+            //Console.WriteLine();
+
+            #endregion
+
+            #region Decorator pattern test code
+
+            //Client client = new Client();
+
+            //ConcreteComponent simple = new ConcreteComponent();
+            //Console.WriteLine("Client: I get a simple component:");
+            //client.ClientMethod(simple);
+            //Console.WriteLine();
+
+            //ConcreteDecoratorA decorator1 = new ConcreteDecoratorA(simple);
+            //ConcreteDecoratorB decorator2 = new ConcreteDecoratorB(decorator1);
+            //Console.WriteLine("Client: Now I've got a decorated component:");
+            //client.ClientMethod(decorator2);
+
+            #endregion
+
+            #region Abstract Factory pattern test code
+
+            //MacFactory macFactory = new MacFactory();
+            //WinFactory winFactory = new WinFactory();
+            //App winApp = new App(winFactory);
+            //App macApp = new App(macFactory);
+
+            //Console.WriteLine("Starting win app.");
+            //winApp.Paint();
+            //Console.WriteLine("\nStarting mac app.");
+            //macApp.Paint();
+
+            #endregion
+
+            #region Composite pattern test code
+
+            Structural.Composite.Client client = new Structural.Composite.Client();
+
+            Leaf leaf = new Leaf();
+            Console.WriteLine("Client: I get a simple component:");
+            client.ClientCode(leaf);
+
+            Composite tree = new Composite();
+            Composite branch1 = new Composite();
+            branch1.Add(new Leaf());
+            branch1.Add(new Leaf());
+            Composite branch2 = new Composite();
+            branch2.Add(new Leaf());
+            tree.Add(branch1);
+            tree.Add(branch2);
+            Console.WriteLine("Client: Now I've got a composite tree:");
+            client.ClientCode(tree);
+
+            Console.Write("Client: I don't need to check the components classes even when managing the tree:\n");
+            client.ClientCode2(tree, leaf);
 
             #endregion
         }
